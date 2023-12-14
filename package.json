@@ -1,6 +1,8 @@
 {
   "name": "@xudong/ui",
   "version": "0.0.1",
+  "description": "A UI library for React",
+  "repository": "https://github.com/xudongcc/ui.git",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "files": [
@@ -86,6 +88,14 @@
     "tailwindcss": "^3.3.6",
     "typescript": "^5.3.3"
   },
+  "peerDependencies": {
+    "@headlessui/react": "^1.7.14",
+    "@heroicons/react": "^2.0.17",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.43.9",
+    "tailwindcss": "^3.3.2"
+  },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
       "prettier --write",
@@ -99,13 +109,5 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "peerDependencies": {
-    "@headlessui/react": "^1.7.14",
-    "@heroicons/react": "^2.0.17",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-hook-form": "^7.43.9",
-    "tailwindcss": "^3.3.2"
   }
 }
