@@ -1,11 +1,12 @@
 {
   "name": "@xudong/ui",
-  "version": "0.0.1",
+  "version": "0.0.0-development",
   "description": "A UI library for React",
-  "homepage": "https://github.com/xudongcc/ui#readme",
+  "author": "Xudong Huang <me@xudong.cc> (https://www.xudong.cc/)",
+  "homepage": "https://ui.xudong.cc",
   "repository": {
     "type": "git",
-    "url": "https://github.com/xudongcc/ui.git"
+    "url": "git+https://github.com/xudongcc/ui.git"
   },
   "bugs": {
     "url": "https://github.com/xudongcc/ui/issues"
