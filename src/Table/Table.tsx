@@ -1,62 +1,48 @@
 import {
-  type ColumnDef,
+  type CellContext,
+  createColumnHelper,
+  type DeepKeys,
   flexRender,
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { type ReactElement, useRef } from "react";
+import { type ReactElement, type ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { Spinner } from "../Spinner";
-
-const columnAlignClass = {
-  left: "text-left",
-  center: "text-center",
-  right: "text-right",
-};
-
-const columnWrapClass = {
-  true: "break-words",
-  false: "whitespace-nowrap",
-};
-
-export type TableColumnProps<T> = ColumnDef<T> & {
+export interface TableColumnProps<T> {
+  title: string;
+  field: DeepKeys<T>;
   align?: "left" | "center" | "right";
-  wordWrap?: boolean;
-};
+  render?: (row: T) => ReactNode;
+}
 
 export interface TableProps<T> {
   columns: Array<TableColumnProps<T>>;
   data: T[];
-  bodyHeight?: number;
-  loading?: boolean;
-  onRow?: (record: T) => {
-    onClick?: (
-      event: React.MouseEvent<HTMLTableRowElement, MouseEvent>,
-    ) => void;
-  };
 }
 
-export function Table<T>({
-  columns,
-  data,
-  bodyHeight,
-  loading,
-  onRow,
-}: TableProps<T>): ReactElement {
-  const table = useReactTable({
+export function Table<T>({ columns, data }: TableProps<T>): ReactElement {
+  const columnHelper = createColumnHelper<T>();
+
+  const reactTableColumns = columns.map((column) =>
+    columnHelper.accessor(column.field, {
+      header: column.title,
+      cell: (ctx: CellContext<T, any>) => {
+        return column.render?.(ctx.row.original) ?? ctx.renderValue();
+      },
+    }),
+  );
+
+  const table = useReactTable<T>({
     data,
-    columns,
+    columns: reactTableColumns,
     getCoreRowModel: getCoreRowModel(),
   });
-
-  const tableHeaderRef = useRef<HTMLTableElement>(null);
-  const tableFooterRef = useRef<HTMLTableElement>(null);
 
   return (
     <div className="min-w-full">
       <div className="overflow-hidden">
-        <table className="w-full table-fixed" ref={tableHeaderRef}>
+        <table className="w-full table-fixed">
           <thead className="t-0 sticky border-b">
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
@@ -65,18 +51,6 @@ export function Table<T>({
                     <th
                       className={twMerge(
                         "px-3 py-3.5 text-left text-sm font-semibold text-gray-900",
-                        typeof (header.column.columnDef as TableColumnProps<T>)
-                          ?.align !== "undefined" &&
-                          columnAlignClass[
-                            (header.column.columnDef as TableColumnProps<T>)
-                              .align!
-                          ],
-                        typeof (header.column.columnDef as TableColumnProps<T>)
-                          ?.wordWrap !== "undefined" &&
-                          columnWrapClass[
-                            (header.column.columnDef as TableColumnProps<T>)
-                              .wordWrap as unknown as keyof typeof columnWrapClass
-                          ],
                       )}
                       key={header.id}
                       style={{ width: header.getSize() }}
@@ -96,55 +70,15 @@ export function Table<T>({
         </table>
       </div>
 
-      <div
-        className={twMerge(
-          loading === true
-            ? "overflow-hidden pointer-events-none select-none"
-            : "overflow-x-auto overflow-y-auto",
-        )}
-        style={{
-          height:
-            typeof bodyHeight !== "undefined" ? `${bodyHeight}px` : undefined,
-        }}
-        onScroll={(e) => {
-          const scrollLeft = (e.target as HTMLElement).scrollLeft;
-
-          if (tableHeaderRef.current != null) {
-            tableHeaderRef.current.style.transform = `translateX(-${scrollLeft}px)`;
-          }
-          if (tableFooterRef.current != null) {
-            tableFooterRef.current.style.transform = `translateX(-${scrollLeft}px)`;
-          }
-        }}
-      >
+      <div className="overflow-x-auto overflow-y-auto">
         <table className="w-full table-fixed">
           <tbody className="divide-y divide-gray-200 bg-surface">
             {table.getRowModel().rows.map((row) => (
-              <tr
-                className={twMerge(
-                  "hover:bg-gray-50",
-                  onRow != null && "cursor-pointer",
-                )}
-                key={row.id}
-                onClick={(e) => {
-                  onRow?.(row.original)?.onClick?.(e);
-                }}
-              >
+              <tr className={twMerge("hover:bg-gray-50")} key={row.id}>
                 {row.getVisibleCells().map((cell) => (
                   <td
                     className={twMerge(
                       "break-words px-3 py-4 text-sm text-gray-500",
-                      typeof (cell.column.columnDef as TableColumnProps<T>)
-                        ?.align !== "undefined" &&
-                        columnAlignClass[
-                          (cell.column.columnDef as TableColumnProps<T>).align!
-                        ],
-                      typeof (cell.column.columnDef as TableColumnProps<T>)
-                        ?.wordWrap !== "undefined" &&
-                        columnWrapClass[
-                          (cell.column.columnDef as TableColumnProps<T>)
-                            .wordWrap as unknown as keyof typeof columnWrapClass
-                        ],
                     )}
                     key={cell.id}
                     style={{ width: cell.column.getSize() }}
@@ -157,55 +91,6 @@ export function Table<T>({
           </tbody>
         </table>
       </div>
-
-      {table.getAllColumns().filter((item) => item.columnDef?.footer).length >
-        0 && (
-        <div className="overflow-hidden">
-          <table className="w-full table-fixed" ref={tableFooterRef}>
-            <tfoot>
-              {table.getFooterGroups().map((footerGroup) => (
-                <tr key={footerGroup.id}>
-                  {footerGroup.headers.map((header) => (
-                    <th
-                      className={twMerge(
-                        "break-words px-3 py-4 text-sm text-gray-500",
-                        typeof (header.column.columnDef as TableColumnProps<T>)
-                          ?.align !== "undefined"
-                          ? columnAlignClass[
-                              (header.column.columnDef as TableColumnProps<T>)
-                                .align!
-                            ]
-                          : columnAlignClass.left,
-                        typeof (header.column.columnDef as TableColumnProps<T>)
-                          ?.wordWrap !== "undefined" &&
-                          columnWrapClass[
-                            (header.column.columnDef as TableColumnProps<T>)
-                              .wordWrap as unknown as keyof typeof columnWrapClass
-                          ],
-                      )}
-                      key={header.id}
-                      style={{ width: header.column.getSize() }}
-                    >
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.footer,
-                            header.getContext(),
-                          )}
-                    </th>
-                  ))}
-                </tr>
-              ))}
-            </tfoot>
-          </table>
-        </div>
-      )}
-
-      {loading === true && (
-        <div className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2">
-          <Spinner size="lg" />
-        </div>
-      )}
     </div>
   );
 }

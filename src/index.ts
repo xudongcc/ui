@@ -17,7 +17,6 @@ export * from "./Form";
 export * from "./FormGroup";
 export * from "./FormItem";
 export * from "./Frame";
-export * from "./GraphQLTable";
 export * from "./Icon";
 export * from "./Input";
 export * from "./Link";

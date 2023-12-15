@@ -14,6 +14,15 @@ export default {
   ],
   parameters: {
     // actions: { argTypesRegex: "^on[A-Z].*" },
+    backgrounds: {
+      default: "light",
+      values: [
+        {
+          name: "light",
+          value: "#f9fafb",
+        },
+      ],
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,
