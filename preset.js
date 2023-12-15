@@ -17,6 +17,7 @@ module.exports = {
         },
         link: colors.blue[600],
         disabled: colors.gray[400],
+        muted: colors.gray[600],
       },
       backgroundColor: {
         root: colors.gray[50],
@@ -25,6 +26,7 @@ module.exports = {
         secondary: colors.gray[100],
         destructive: colors.red[600],
         disabled: colors.gray[200],
+        muted: colors.gray[100],
       },
       zIndex: {
         10: "10",

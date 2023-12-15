@@ -17,7 +17,7 @@ export const Card = forwardRef<CardProps, "div">(
     return (
       <div
         className={twMerge(
-          "flex flex-col gap-2 sm:rounded-lg bg-surface shadow py-4",
+          "flex flex-col gap-2 sm:rounded-lg bg-surface shadow-sm py-4 border",
           className,
         )}
         ref={ref}

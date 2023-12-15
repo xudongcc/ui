@@ -19,7 +19,7 @@ export default {
       values: [
         {
           name: "light",
-          value: "#f9fafb",
+          value: "#ffffff",
         },
       ],
     },
