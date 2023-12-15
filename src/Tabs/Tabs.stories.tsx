@@ -5,6 +5,7 @@ import { Card } from "../Card";
 import { Tab } from "./Tab";
 import { TabList } from "./TabList";
 import { TabPanel } from "./TabPanel";
+import { TabPanels } from "./TabPanels";
 import { Tabs } from "./Tabs";
 
 const meta = {
@@ -25,18 +26,20 @@ export const Default: FC = () => {
         <Tab value="yaml">YAML</Tab>
       </TabList>
 
-      <TabPanel value="metrics">
-        <Card>Metrics Content</Card>
-      </TabPanel>
-      <TabPanel value="logs">
-        <Card>Logs Content</Card>
-      </TabPanel>
-      <TabPanel value="revisions">
-        <Card>Revisions Content</Card>
-      </TabPanel>
-      <TabPanel value="yaml">
-        <Card>YAML Content</Card>
-      </TabPanel>
+      <TabPanels>
+        <TabPanel value="metrics">
+          <Card>Metrics Content</Card>
+        </TabPanel>
+        <TabPanel value="logs">
+          <Card>Logs Content</Card>
+        </TabPanel>
+        <TabPanel value="revisions">
+          <Card>Revisions Content</Card>
+        </TabPanel>
+        <TabPanel value="yaml">
+          <Card>YAML Content</Card>
+        </TabPanel>
+      </TabPanels>
     </Tabs>
   );
 };

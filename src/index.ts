@@ -20,7 +20,6 @@ export * from "./Frame";
 export * from "./Icon";
 export * from "./Input";
 export * from "./Link";
-export * from "./Link";
 export * from "./Modal";
 export * from "./Navigation";
 export * from "./NavigationSection";
