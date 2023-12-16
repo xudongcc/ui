@@ -15,6 +15,7 @@ export default meta;
 
 interface Service {
   name: string;
+  rpm: number;
   url: string;
   lastDeployedAt: Date;
   lastDeployedUser: string;
@@ -23,18 +24,21 @@ interface Service {
 const data: Service[] = [
   {
     name: "client",
+    rpm: 1234,
     url: `https://client--example-project.example.app`,
     lastDeployedAt: new Date(),
     lastDeployedUser: "Xudong Huang",
   },
   {
     name: "server",
+    rpm: 123,
     url: `https://server--example-project.example.app`,
     lastDeployedAt: new Date(),
     lastDeployedUser: "Xudong Huang",
   },
   {
     name: "worker",
+    rpm: 234,
     url: `https://worker--example-project.example.app`,
     lastDeployedAt: new Date(),
     lastDeployedUser: "Xudong Huang",
@@ -47,6 +51,11 @@ export const Base: FC = () => {
       <Table<Service>
         columns={[
           { title: "名称", field: "name" },
+          {
+            title: "每秒请求数",
+            field: "rpm",
+            align: "right",
+          },
           {
             title: "URL",
             field: "url",

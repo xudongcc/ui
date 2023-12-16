@@ -1,25 +1,14 @@
 import {
   type CellContext,
   createColumnHelper,
-  type DeepKeys,
   flexRender,
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { type ReactElement, type ReactNode } from "react";
+import { type ReactElement } from "react";
 import { twMerge } from "tailwind-merge";
 
-export interface TableColumnProps<T> {
-  title: string;
-  field: DeepKeys<T>;
-  align?: "left" | "center" | "right";
-  render?: (row: T) => ReactNode;
-}
-
-export interface TableProps<T> {
-  columns: Array<TableColumnProps<T>>;
-  data: T[];
-}
+import { type TableProps } from "./TableProps";
 
 export function Table<T>({ columns, data }: TableProps<T>): ReactElement {
   const columnHelper = createColumnHelper<T>();
@@ -29,6 +18,9 @@ export function Table<T>({ columns, data }: TableProps<T>): ReactElement {
       header: column.title,
       cell: (ctx: CellContext<T, any>) => {
         return column.render?.(ctx.row.original) ?? ctx.renderValue();
+      },
+      meta: {
+        column,
       },
     }),
   );
@@ -51,6 +43,10 @@ export function Table<T>({ columns, data }: TableProps<T>): ReactElement {
                     <th
                       className={twMerge(
                         "px-3 py-3.5 text-left text-sm font-semibold text-gray-900",
+                        header.column.columnDef.meta?.column?.align ===
+                          "center" && "text-center",
+                        header.column.columnDef.meta?.column?.align ===
+                          "right" && "text-right",
                       )}
                       key={header.id}
                       style={{ width: header.getSize() }}
@@ -79,6 +75,10 @@ export function Table<T>({ columns, data }: TableProps<T>): ReactElement {
                   <td
                     className={twMerge(
                       "break-words px-3 py-4 text-sm text-gray-500",
+                      cell.column.columnDef.meta?.column?.align === "center" &&
+                        "text-center",
+                      cell.column.columnDef.meta?.column?.align === "right" &&
+                        "text-right",
                     )}
                     key={cell.id}
                     style={{ width: cell.column.getSize() }}
