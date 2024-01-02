@@ -1,11 +1,11 @@
 import { type FC } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { useAppProviderProps } from "../AppProvider";
-import { Badge } from "../Badge";
-import { Icon } from "../Icon";
-import { useNavigationProps } from "../Navigation";
-import { type SVGComponent } from "../types/SVGComponent";
+import { useAppProviderProps } from "../app-provider";
+import { Badge } from "../badge";
+import { Icon } from "../icon";
+import { useNavigationProps } from "../navigation";
+import { type SVGComponent } from "../types/svg-component";
 
 export interface NavigationItemProps {
   href?: string;

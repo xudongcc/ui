@@ -3,9 +3,9 @@ import dayjs from "dayjs";
 import { type FC, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { Card } from "../Card";
-import { DatePicker } from "../DatePicker";
-import { Input } from "../Input";
+import { Card } from "../card";
+import { DatePicker } from "../date-picker";
+import { Input } from "../input";
 
 export interface PresetRange {
   title: string;
@@ -32,7 +32,9 @@ export const DateRangePicker: FC<DateRangePickerProps> = ({
   onChange,
 }) => {
   const [activeDateRange, setActiveDateRange] = useState(
-    typeof range !== "undefined" ? { title: "custom", range } : presetRange?.[0]
+    typeof range !== "undefined"
+      ? { title: "custom", range }
+      : presetRange?.[0],
   );
   const [{ month, year }, setDate] = useState({
     month:
@@ -111,7 +113,8 @@ export const DateRangePicker: FC<DateRangePickerProps> = ({
                     <div
                       className={twMerge(
                         "cursor-pointer text-gray-600 whitespace-nowrap rounded p-1 text-sm hover:bg-gray-100",
-                        preset.title === activeDateRange?.title && "bg-gray-100"
+                        preset.title === activeDateRange?.title &&
+                          "bg-gray-100",
                       )}
                       key={index}
                       onClick={() => {
@@ -153,15 +156,12 @@ export const DateRangePicker: FC<DateRangePickerProps> = ({
                     );
                   });
 
-                  const newDateRange =
-                    preset != null
-                      ? preset
-                      : {
-                          title: "Custom",
-                          range: [start, end],
-                        };
+                  const newDateRange = preset ?? {
+                    title: "Custom",
+                    range: [start, end],
+                  };
 
-                  setActiveDateRange(newDateRange as PresetRange);
+                  setActiveDateRange(newDateRange);
                   onChange?.([start, end]);
                 }}
                 onMonthChange={(month, year) => {

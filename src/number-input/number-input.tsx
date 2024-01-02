@@ -1,4 +1,4 @@
-import { Input, type InputProps } from "../Input";
+import { Input, type InputProps } from "../input";
 import { forwardRef } from "../utils";
 
 export interface NumberInputProps

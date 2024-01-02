@@ -1,10 +1,9 @@
 import { HiEllipsisHorizontal } from "react-icons/hi2";
 import { twMerge } from "tailwind-merge";
 
-import { Action, type ActionProps } from "../Action";
-import { Button } from "../Button";
-import { ButtonGroup } from "../ButtonGroup";
-import { Dropdown } from "../Dropdown";
+import { type ActionProps } from "../action";
+import { Button } from "../button";
+import { Dropdown } from "../dropdown";
 import { forwardRef } from "../utils";
 
 export interface CardProps {

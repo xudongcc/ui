@@ -1,7 +1,7 @@
 import { type HTMLProps } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { FormItem, type FormItemProps } from "../FormItem";
+import { FormItem, type FormItemProps } from "../form-item";
 import { forwardRef } from "../utils";
 
 export interface TextareaProps
@@ -23,7 +23,7 @@ export const Textarea = forwardRef<TextareaProps, "textarea">(
       rows = 3,
       ...props
     },
-    ref
+    ref,
   ) => {
     return (
       <FormItem error={error} helpText={helpText} label={label}>
@@ -33,7 +33,7 @@ export const Textarea = forwardRef<TextareaProps, "textarea">(
             typeof label !== "undefined" && "mt-2",
             typeof error !== "undefined" &&
               `ring-red-300 focus:ring-red-500 placeholder:text-red-300 text-red-900`,
-            className
+            className,
           )}
           ref={ref}
           rows={rows}
@@ -43,5 +43,5 @@ export const Textarea = forwardRef<TextareaProps, "textarea">(
         />
       </FormItem>
     );
-  }
+  },
 );

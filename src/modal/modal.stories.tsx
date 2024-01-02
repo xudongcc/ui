@@ -1,10 +1,10 @@
 import type { Meta } from "@storybook/react";
 import { type FC, useState } from "react";
 
-import { Button } from "../Button";
-import { Modal } from "./Modal";
-import page from "./Modal.mdx";
-import { useModal } from "./useModal";
+import { Button } from "../button";
+import { Modal } from "./modal";
+import page from "./modal.mdx";
+import { useModal } from "./use-modal";
 
 export default {
   title: "Overlay 叠层/Modal 模态框",

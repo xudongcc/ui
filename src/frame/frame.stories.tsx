@@ -10,13 +10,13 @@ import {
   BiUser,
 } from "react-icons/bi";
 
-import { Card } from "../Card";
-import { Dropdown } from "../Dropdown";
-import { Navigation } from "../Navigation";
-import { NavigationSection } from "../NavigationSection";
-import { Page } from "../Page";
-import { TopBar } from "../TopBar";
-import { TopBarUserMenu } from "../TopBarUserMenu";
+import { Card } from "../card";
+import { Dropdown } from "../dropdown";
+import { Navigation } from "../navigation";
+import { NavigationSection } from "../navigation-section";
+import { Page } from "../page";
+import { TopBar } from "../top-bar";
+import { TopBarUserMenu } from "../top-bar-user-menu";
 import { Frame } from "./";
 
 export default {
@@ -36,7 +36,7 @@ export const Default: FC = () => {
   }, []);
 
   return (
-    <div className="bg-root h-full w-full">
+    <div className="h-full w-full bg-root">
       <Frame
         navigation={
           <Navigation location={window.location.hash}>

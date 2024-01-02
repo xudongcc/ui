@@ -1,9 +1,9 @@
 import type { Meta } from "@storybook/react";
 import { type FC } from "react";
 
-import { Button } from "../Button";
-import { Popover } from "./Popover";
-import page from "./Popover.mdx";
+import { Button } from "../button";
+import { Popover } from "./popover";
+import page from "./popover.mdx";
 
 export default {
   title: "Overlay 叠层/Popover 弹出窗口",

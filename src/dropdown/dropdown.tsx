@@ -1,8 +1,8 @@
 import { type FC } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { type ActionProps } from "../Action";
-import { Popover, type PopoverProps } from "../Popover";
+import { type ActionProps } from "../action";
+import { Popover, type PopoverProps } from "../popover";
 
 export interface DropdownSectionProps {
   className?: string;

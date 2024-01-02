@@ -2,8 +2,8 @@ import { ArrowUturnLeftIcon } from "@heroicons/react/24/solid";
 import { type FC, type PropsWithChildren } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { Action, type ActionProps } from "../Action";
-import { ButtonGroup } from "../ButtonGroup";
+import { Action, type ActionProps } from "../action";
+import { ButtonGroup } from "../button-group";
 
 export interface PageHeaderProps {
   title?: string;

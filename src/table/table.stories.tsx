@@ -2,8 +2,8 @@ import { type Meta } from "@storybook/react";
 import dayjs from "dayjs";
 import { type FC } from "react";
 
-import { Card } from "../Card";
-import { Table } from "./Table";
+import { Card } from "../card";
+import { Table } from "./table";
 
 const meta = {
   title: "Advanced 高级/Table 表格",

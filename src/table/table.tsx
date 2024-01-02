@@ -8,7 +8,7 @@ import {
 import { type ReactElement } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { type TableProps } from "./TableProps";
+import { type TableProps } from "./table-props";
 
 export function Table<T>({ columns, data }: TableProps<T>): ReactElement {
   const columnHelper = createColumnHelper<T>();

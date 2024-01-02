@@ -1,11 +1,11 @@
 import type { Meta } from "@storybook/react";
 import { type FC } from "react";
 
-import { Card } from "../Card";
-import { Frame } from "../Frame";
-import { Page } from "../Page";
-import { ContextualSaveBar } from "./ContextualSaveBar";
-import page from "./ContextualSaveBar.mdx";
+import { Card } from "../card";
+import { Frame } from "../frame";
+import { Page } from "../page";
+import { ContextualSaveBar } from "./contextual-save-bar";
+import page from "./contextual-save-bar.mdx";
 
 const meta = {
   title: "Feedback 反馈/ContextualSaveBar 上下文保存栏",

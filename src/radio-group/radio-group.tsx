@@ -1,5 +1,5 @@
-import { FormItem, type FormItemProps } from "../FormItem";
-import { Radio } from "../Radio";
+import { FormItem, type FormItemProps } from "../form-item";
+import { Radio } from "../radio";
 import { forwardRef } from "../utils";
 
 export interface RadioGroupOption {
@@ -17,7 +17,7 @@ export interface RadioGroupProps extends FormItemProps {
 export const RadioGroup = forwardRef<RadioGroupProps, "div">(
   (
     { className, name, label, helpText, error, options, value, onChange },
-    ref
+    ref,
   ) => {
     return (
       <FormItem
@@ -49,5 +49,5 @@ export const RadioGroup = forwardRef<RadioGroupProps, "div">(
         ))}
       </FormItem>
     );
-  }
+  },
 );

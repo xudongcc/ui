@@ -1,5 +1,5 @@
-import { Checkbox } from "../Checkbox";
-import { FormItem, type FormItemProps } from "../FormItem";
+import { Checkbox } from "../checkbox";
+import { FormItem, type FormItemProps } from "../form-item";
 import { forwardRef } from "../utils";
 
 export interface CheckboxGroupOption {
@@ -49,5 +49,5 @@ export const CheckboxGroup = forwardRef<CheckboxGroupProps, "div">(
         ))}
       </FormItem>
     );
-  }
+  },
 );

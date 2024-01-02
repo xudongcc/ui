@@ -1,10 +1,10 @@
 import type { Meta } from "@storybook/react";
 import { type FC } from "react";
 
-import { Button } from "../Button";
-import { useToast } from "../Toast";
-import { Dropdown } from "./Dropdown";
-import page from "./Dropdown.mdx";
+import { Button } from "../button";
+import { useToast } from "../toast";
+import { Dropdown } from "./dropdown";
+import page from "./dropdown.mdx";
 
 export default {
   title: "Overlay 叠层/Dropdown 下拉菜单",

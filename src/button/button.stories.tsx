@@ -6,8 +6,8 @@ import type { Meta } from "@storybook/react";
 import { type FC } from "react";
 import { BiLogoGithub } from "react-icons/bi";
 
-import { Button } from "./Button";
-import page from "./Button.mdx";
+import { Button } from "./button";
+import page from "./button.mdx";
 
 export default {
   title: "Base 基础/Button 按钮",

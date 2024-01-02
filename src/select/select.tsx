@@ -3,8 +3,8 @@ import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/24/outline";
 import { Fragment, type ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { FormItem, type FormItemProps } from "../FormItem";
-import { Spinner } from "../Spinner";
+import { FormItem, type FormItemProps } from "../form-item";
+import { Spinner } from "../spinner";
 import { forwardRef } from "../utils";
 
 export interface SelectOption {

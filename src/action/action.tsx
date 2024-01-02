@@ -1,6 +1,6 @@
 import { type ReactNode } from "react";
 
-import { Button, type ButtonProps } from "../Button";
+import { Button, type ButtonProps } from "../button";
 import { forwardRef } from "../utils";
 
 export interface ActionProps extends ButtonProps {

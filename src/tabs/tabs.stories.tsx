@@ -1,12 +1,12 @@
 import { type Meta } from "@storybook/react";
 import { type FC } from "react";
 
-import { Card } from "../Card";
-import { Tab } from "./Tab";
-import { TabList } from "./TabList";
-import { TabPanel } from "./TabPanel";
-import { TabPanels } from "./TabPanels";
-import { Tabs } from "./Tabs";
+import { Card } from "../card";
+import { Tab } from "./tab";
+import { TabList } from "./tab-list";
+import { TabPanel } from "./tab-panel";
+import { TabPanels } from "./tab-panels";
+import { Tabs } from "./tabs";
 
 const meta = {
   title: "Layout 布局/Tabs 标签栏",

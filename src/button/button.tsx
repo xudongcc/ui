@@ -1,9 +1,9 @@
 import { type ReactElement } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { Icon } from "../Icon";
-import { Spinner } from "../Spinner";
-import { type SVGComponent } from "../types/SVGComponent";
+import { Icon } from "../icon";
+import { Spinner } from "../spinner";
+import { type SVGComponent } from "../types/svg-component";
 import { forwardRef } from "../utils";
 
 export interface ButtonProps {

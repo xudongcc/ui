@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion, @typescript-eslint/no-unsafe-argument */
+
 import { useCallback, useMemo } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -15,8 +17,8 @@ import {
   type Range,
   weekdayName,
 } from "../utils/dates";
-import { Day } from "./Day";
-import { Weekday } from "./Weekday";
+import { Day } from "./day";
+import { Weekday } from "./weekday";
 
 export interface MonthProps {
   focusedDate?: Date;
@@ -62,7 +64,7 @@ export const Month = ({
     <Weekday
       current={current && new Date().getDay() === weekday}
       key={weekday}
-      title={weekdayName(weekday) as string}
+      title={weekdayName(weekday)!}
     />
   ));
 
@@ -87,7 +89,7 @@ export const Month = ({
           key={dayIndex}
           lastDayOfMonth={lastDayOfMonth}
           onHover={(day) => {
-            onHover?.(day as Date);
+            onHover?.(day!);
           }}
         />
       );
@@ -141,7 +143,7 @@ export const Month = ({
         onClick={handleDateClick}
         onFocus={onFocus}
         onHover={(day) => {
-          onHover?.(day as Date);
+          onHover?.(day!);
         }}
       />
     );
