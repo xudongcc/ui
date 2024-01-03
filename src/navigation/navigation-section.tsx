@@ -4,8 +4,8 @@ import { twMerge } from "tailwind-merge";
 import { useAppProviderProps } from "../app-provider";
 import { Badge } from "../badge";
 import { Icon } from "../icon";
-import { useNavigationProps } from "../navigation";
 import { type SVGComponent } from "../types/svg-component";
+import { useNavigationProps } from "./index";
 
 export interface NavigationItemProps {
   href?: string;

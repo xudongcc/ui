@@ -13,5 +13,5 @@ export const FormGroup = forwardRef<FormGroupProps, "div">(
         {children}
       </div>
     );
-  }
+  },
 );

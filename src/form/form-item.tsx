@@ -19,7 +19,7 @@ export const FormItem = forwardRef<FormItemProps, "div">(
           <label
             className={twMerge(
               "block font-medium leading-6 text-gray-900 text-sm",
-              className
+              className,
             )}
             htmlFor={label}
           >
@@ -38,7 +38,7 @@ export const FormItem = forwardRef<FormItemProps, "div">(
               typeof error !== "undefined" && `text-red-600`,
               typeof error === "undefined" &&
                 typeof helpText !== "undefined" &&
-                `text-gray-500`
+                `text-gray-500`,
             )}
           >
             {error ?? helpText}
@@ -46,5 +46,5 @@ export const FormItem = forwardRef<FormItemProps, "div">(
         )}
       </div>
     );
-  }
+  },
 );

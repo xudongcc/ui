@@ -5,7 +5,7 @@ import { Fragment, useMemo, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { Badge } from "../badge";
-import { FormItem, type FormItemProps } from "../form-item";
+import { FormItem, type FormItemProps } from "../form";
 import { Input } from "../input";
 import { Spinner } from "../spinner";
 import { forwardRef } from "../utils";

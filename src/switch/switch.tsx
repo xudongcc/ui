@@ -4,7 +4,7 @@ import {
 } from "@headlessui/react";
 import { twMerge } from "tailwind-merge";
 
-import { FormItem, type FormItemProps } from "../form-item";
+import { FormItem, type FormItemProps } from "../form";
 import { forwardRef } from "../utils";
 
 export interface SwitchProps

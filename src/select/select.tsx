@@ -3,7 +3,7 @@ import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/24/outline";
 import { Fragment, type ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { FormItem, type FormItemProps } from "../form-item";
+import { FormItem, type FormItemProps } from "../form";
 import { Spinner } from "../spinner";
 import { forwardRef } from "../utils";
 

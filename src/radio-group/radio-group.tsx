@@ -1,4 +1,4 @@
-import { FormItem, type FormItemProps } from "../form-item";
+import { FormItem, type FormItemProps } from "../form";
 import { Radio } from "../radio";
 import { forwardRef } from "../utils";
 
