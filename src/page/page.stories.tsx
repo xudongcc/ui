@@ -3,8 +3,7 @@ import { type FC } from "react";
 
 import { Card } from "../card";
 import { PageActions } from "../page-actions";
-import { PageLayout } from "../page-layout";
-import { PageLayoutSection } from "../page-layout-section";
+import { PageLayout, PageLayoutSection } from "../page-layout";
 import { Page } from "./page";
 import page from "./page.mdx";
 
@@ -40,7 +39,7 @@ export const Default: FC = (args) => {
           <PageLayoutSection>
             <PageActions
               primaryAction={{ content: "保存" }}
-              secondaryActions={[{ content: "删除", destructive: true }]}
+              secondaryActions={[{ content: "删除", variant: "destructive" }]}
             />
           </PageLayoutSection>
         </PageLayout>

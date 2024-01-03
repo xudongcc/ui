@@ -90,7 +90,6 @@ export const Controlled: FC = () => {
           },
         },
       ]}
-      queryPlaceholder="搜索"
       values={values}
       onChange={(newValues) => {
         console.log("newValues:", newValues);

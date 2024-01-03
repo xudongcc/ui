@@ -12,8 +12,7 @@ import {
 
 import { Card } from "../card";
 import { Dropdown } from "../dropdown";
-import { Navigation } from "../navigation";
-import { NavigationSection } from "../navigation-section";
+import { Navigation, NavigationSection } from "../navigation";
 import { Page } from "../page";
 import { TopBar } from "../top-bar";
 import { TopBarUserMenu } from "../top-bar-user-menu";
