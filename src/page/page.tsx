@@ -9,7 +9,7 @@ import { type As } from "../types";
 
 export interface PageHeaderProps<ActionComponent extends As = typeof Button> {
   title?: string;
-  backAction?: Pick<ActionProps<ActionComponent>, "onAction">;
+  backAction?: ActionProps<ActionComponent>;
   primaryAction?: ActionProps<ActionComponent>;
   secondaryActions?: Array<ActionProps<ActionComponent>>;
 }
