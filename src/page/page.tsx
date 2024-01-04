@@ -7,19 +7,19 @@ import { type Button } from "../button";
 import { ButtonGroup } from "../button-group";
 import { type As } from "../types";
 
-export interface PageHeaderProps<Component extends As = typeof Button> {
+export interface PageHeaderProps<ActionComponent extends As = typeof Button> {
   title?: string;
-  backAction?: Pick<ActionProps<Component>, "onAction">;
-  primaryAction?: ActionProps<Component>;
-  secondaryActions?: Array<ActionProps<Component>>;
+  backAction?: Pick<ActionProps<ActionComponent>, "onAction">;
+  primaryAction?: ActionProps<ActionComponent>;
+  secondaryActions?: Array<ActionProps<ActionComponent>>;
 }
 
-export function PageHeader<Component extends As = typeof Button>({
+export function PageHeader<ActionComponent extends As = typeof Button>({
   title,
   backAction,
   primaryAction,
   secondaryActions = [],
-}: PageHeaderProps<Component>): ReactElement {
+}: PageHeaderProps<ActionComponent>): ReactElement {
   return (
     <div className="mb-4 flex items-center justify-between gap-2">
       {typeof backAction !== "undefined" && (
@@ -43,22 +43,22 @@ export function PageHeader<Component extends As = typeof Button>({
   );
 }
 
-export interface PageProps<Component extends As = typeof Button>
-  extends PageHeaderProps<Component> {
+export interface PageProps<ActionComponent extends As = typeof Button>
+  extends PageHeaderProps<ActionComponent> {
   fullWidth?: boolean;
 }
 
-export function Page<Component extends As = typeof Button>({
+export function Page<ActionComponent extends As = typeof Button>({
   title,
   fullWidth = false,
   children,
   backAction,
   primaryAction,
   secondaryActions,
-}: PropsWithChildren<PageProps<Component>>): ReactElement {
+}: PropsWithChildren<PageProps<ActionComponent>>): ReactElement {
   return (
     <div className={twMerge(`p-4 mx-auto`, !fullWidth && `max-w-5xl`)}>
-      <PageHeader<Component>
+      <PageHeader<ActionComponent>
         backAction={backAction}
         primaryAction={primaryAction}
         secondaryActions={secondaryActions}

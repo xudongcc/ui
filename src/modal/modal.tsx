@@ -14,17 +14,17 @@ const sizeMap = {
   lg: twMerge(`max-w-[980px] md:max-w-[calc(100%-2rem)] lg:max-w-[980px]`),
 };
 
-export interface ModalProps<Component extends As = typeof Button> {
+export interface ModalProps<ActionComponent extends As = typeof Button> {
   open: boolean;
   onClose: () => void;
   title?: ReactNode;
   children?: ReactNode;
-  primaryAction: ActionProps<Component>;
-  secondaryActions?: Array<ActionProps<Component>>;
+  primaryAction: ActionProps<ActionComponent>;
+  secondaryActions?: Array<ActionProps<ActionComponent>>;
   size?: "sm" | "md" | "lg";
 }
 
-export function Modal<Component extends As = typeof Button>({
+export function Modal<ActionComponent extends As = typeof Button>({
   open,
   title,
   children,
@@ -32,7 +32,7 @@ export function Modal<Component extends As = typeof Button>({
   secondaryActions,
   onClose,
   size = "md",
-}: ModalProps<Component>): ReactElement {
+}: ModalProps<ActionComponent>): ReactElement {
   return (
     <Transition.Root as={Fragment} show={open}>
       <Dialog as="div" className="relative z-110" onClose={onClose}>

@@ -5,15 +5,15 @@ import { type Button } from "../button";
 import { ButtonGroup } from "../button-group";
 import { type As } from "../types";
 
-export interface PageActionsProps<Component extends As = typeof Button> {
-  primaryAction?: ActionProps<Component>;
-  secondaryActions?: Array<ActionProps<Component>>;
+export interface PageActionsProps<ActionComponent extends As = typeof Button> {
+  primaryAction?: ActionProps<ActionComponent>;
+  secondaryActions?: Array<ActionProps<ActionComponent>>;
 }
 
-export function PageActions<Component extends As = typeof Button>({
+export function PageActions<ActionComponent extends As = typeof Button>({
   primaryAction,
   secondaryActions = [],
-}: PageActionsProps<Component>): ReactElement {
+}: PageActionsProps<ActionComponent>): ReactElement {
   return (
     <div className="mx-auto flex w-full justify-end">
       <ButtonGroup>

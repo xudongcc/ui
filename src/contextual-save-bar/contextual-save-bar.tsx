@@ -6,21 +6,23 @@ import { type Button } from "../button";
 import { ButtonGroup } from "../button-group";
 import { type As } from "../types";
 
-export interface ContextualSaveBarProps<Component extends As = typeof Button> {
+export interface ContextualSaveBarProps<
+  ActionComponent extends As = typeof Button,
+> {
   alignContentFlush?: boolean;
   message?: string;
-  saveAction: ActionProps<Component>;
-  discardAction?: ActionProps<Component>;
+  saveAction: ActionProps<ActionComponent>;
+  discardAction?: ActionProps<ActionComponent>;
   fullWidth?: boolean;
 }
 
-export function ContextualSaveBar<Component extends As = typeof Button>({
+export function ContextualSaveBar<ActionComponent extends As = typeof Button>({
   alignContentFlush = false,
   message,
   saveAction,
   discardAction,
   fullWidth = false,
-}: ContextualSaveBarProps<Component>): ReactElement {
+}: ContextualSaveBarProps<ActionComponent>): ReactElement {
   return (
     <div className="fixed left-0 top-0 z-50 flex w-full bg-black">
       {!alignContentFlush && <div className="w-60" />}

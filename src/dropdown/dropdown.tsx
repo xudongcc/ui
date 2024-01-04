@@ -6,22 +6,24 @@ import { type Button } from "../button";
 import { Popover, type PopoverProps } from "../popover";
 import { type As } from "../types";
 
-export interface DropdownSectionProps<Component extends As = typeof Button> {
+export interface DropdownSectionProps<
+  ActionComponent extends As = typeof Button,
+> {
   className?: string;
   title?: string;
-  items: Array<ActionProps<Component>>;
+  items: Array<ActionProps<ActionComponent>>;
 }
 
-export interface DropdownProps<Component extends As = typeof Button>
+export interface DropdownProps<ActionComponent extends As = typeof Button>
   extends PopoverProps {
-  sections: Array<DropdownSectionProps<Component>>;
+  sections: Array<DropdownSectionProps<ActionComponent>>;
 }
 
-export function Dropdown<Component extends As = typeof Button>({
+export function Dropdown<ActionComponent extends As = typeof Button>({
   className,
   sections,
   ...props
-}: DropdownProps<Component>): ReactElement {
+}: DropdownProps<ActionComponent>): ReactElement {
   return (
     <Popover {...props}>
       <div
