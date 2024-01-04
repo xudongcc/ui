@@ -1,24 +1,26 @@
-import { type FC } from "react";
+import { type ReactElement } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { Action, type ActionProps } from "../action";
+import { type Button } from "../button";
 import { ButtonGroup } from "../button-group";
+import { type As } from "../types";
 
-export interface ContextualSaveBarProps {
+export interface ContextualSaveBarProps<Component extends As = typeof Button> {
   alignContentFlush?: boolean;
   message?: string;
-  saveAction: ActionProps;
-  discardAction?: ActionProps;
+  saveAction: ActionProps<Component>;
+  discardAction?: ActionProps<Component>;
   fullWidth?: boolean;
 }
 
-export const ContextualSaveBar: FC<ContextualSaveBarProps> = ({
+export function ContextualSaveBar<Component extends As = typeof Button>({
   alignContentFlush = false,
   message,
   saveAction,
   discardAction,
   fullWidth = false,
-}) => {
+}: ContextualSaveBarProps<Component>): ReactElement {
   return (
     <div className="fixed left-0 top-0 z-50 flex w-full bg-black">
       {!alignContentFlush && <div className="w-60" />}
@@ -41,4 +43,4 @@ export const ContextualSaveBar: FC<ContextualSaveBarProps> = ({
       </div>
     </div>
   );
-};
+}

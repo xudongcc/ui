@@ -1,11 +1,12 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { type FC, Fragment, type ReactNode, useRef } from "react";
+import { Fragment, type ReactElement, type ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { Action, type ActionProps } from "../action";
 import { Button } from "../button";
 import { ButtonGroup } from "../button-group";
+import { type As } from "../types";
 
 const sizeMap = {
   sm: twMerge(`max-w-[380px]`),
@@ -13,17 +14,17 @@ const sizeMap = {
   lg: twMerge(`max-w-[980px] md:max-w-[calc(100%-2rem)] lg:max-w-[980px]`),
 };
 
-export interface ModalProps {
+export interface ModalProps<Component extends As = typeof Button> {
   open: boolean;
   onClose: () => void;
   title?: ReactNode;
   children?: ReactNode;
-  primaryAction: ActionProps;
-  secondaryActions?: ActionProps[];
+  primaryAction: ActionProps<Component>;
+  secondaryActions?: Array<ActionProps<Component>>;
   size?: "sm" | "md" | "lg";
 }
 
-export const Modal: FC<ModalProps> = ({
+export function Modal<Component extends As = typeof Button>({
   open,
   title,
   children,
@@ -31,17 +32,10 @@ export const Modal: FC<ModalProps> = ({
   secondaryActions,
   onClose,
   size = "md",
-}) => {
-  const initialFocus = useRef(null);
-
+}: ModalProps<Component>): ReactElement {
   return (
     <Transition.Root as={Fragment} show={open}>
-      <Dialog
-        as="div"
-        className="relative z-110"
-        initialFocus={initialFocus}
-        onClose={onClose}
-      >
+      <Dialog as="div" className="relative z-110" onClose={onClose}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -95,11 +89,7 @@ export const Modal: FC<ModalProps> = ({
                       <Action key={index} {...action} />
                     ))}
 
-                    <Action
-                      ref={initialFocus}
-                      variant="primary"
-                      {...primaryAction}
-                    />
+                    <Action variant="primary" {...primaryAction} />
                   </ButtonGroup>
                 </div>
               </Dialog.Panel>
@@ -109,4 +99,4 @@ export const Modal: FC<ModalProps> = ({
       </Dialog>
     </Transition.Root>
   );
-};
+}

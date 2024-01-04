@@ -1,18 +1,21 @@
-import { type ReactNode } from "react";
+import { type ReactElement, type ReactNode } from "react";
 
-import { Button, type ButtonProps } from "../button";
-import { forwardRef } from "../utils";
+import { Button } from "../button";
+import { type As, type PropsOf, type RightJoinProps } from "../types";
 
-export interface ActionProps extends ButtonProps {
-  className?: string;
-  content?: ReactNode;
-  onAction?: () => Promise<void> | void;
-}
+export type ActionProps<Component extends As = typeof Button> = RightJoinProps<
+  PropsOf<Component>,
+  { as?: Component; content?: ReactNode; onAction?: () => Promise<void> | void }
+>;
 
-export const Action = forwardRef<ActionProps, "button">(
-  ({ content, onAction, ...props }, ref) => (
-    <Button ref={ref} onClick={onAction} {...props}>
+export function Action<Component extends As = typeof Button>({
+  content,
+  onAction,
+  ...props
+}: ActionProps<Component>): ReactElement {
+  return (
+    <Button onClick={onAction} {...props}>
       {content}
     </Button>
-  ),
-);
+  );
+}

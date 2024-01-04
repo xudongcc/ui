@@ -1,24 +1,27 @@
-import { type FC } from "react";
+import { type ReactElement } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { type ActionProps } from "../action";
+import { type Button } from "../button";
 import { Popover, type PopoverProps } from "../popover";
+import { type As } from "../types";
 
-export interface DropdownSectionProps {
+export interface DropdownSectionProps<Component extends As = typeof Button> {
   className?: string;
   title?: string;
-  items: ActionProps[];
+  items: Array<ActionProps<Component>>;
 }
 
-export interface DropdownProps extends PopoverProps {
-  sections: DropdownSectionProps[];
+export interface DropdownProps<Component extends As = typeof Button>
+  extends PopoverProps {
+  sections: Array<DropdownSectionProps<Component>>;
 }
 
-export const Dropdown: FC<DropdownProps> = ({
+export function Dropdown<Component extends As = typeof Button>({
   className,
   sections,
   ...props
-}) => {
+}: DropdownProps<Component>): ReactElement {
   return (
     <Popover {...props}>
       <div
@@ -56,4 +59,4 @@ export const Dropdown: FC<DropdownProps> = ({
       </div>
     </Popover>
   );
-};
+}
